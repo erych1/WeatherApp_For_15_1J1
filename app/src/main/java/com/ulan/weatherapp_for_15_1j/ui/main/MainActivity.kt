@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
@@ -37,9 +36,6 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.sleep(2000)
-        installSplashScreen()
-        setTheme(R.style.Theme_WeatherApp_For_15_1J)
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
@@ -49,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         mOpenDialog()
+        viewModel.isLoading.value
         viewModel.getCurrentWeather(cityName)
         binding.rvForecast.adapter = adapter
         observer()
@@ -118,16 +115,16 @@ class MainActivity : AppCompatActivity() {
             binding.mainDegree.text = "${it.current.tempC.toInt()}°C"
             binding.txtWeatherSunny.text = it.current.condition.text
             Glide.with(this).load("https:${it.current.condition.icon}").centerCrop().into(binding.imgWeatherSunny)
-            binding.txt1.text = it.forecast.forecastDay[0].day.maxTempC
-            binding.txt2.text = it.forecast.forecastDay[0].day.minTempC
+            binding.txt1.text = "${it.forecast.forecastDay[0].day.maxTempC}°C↑"
+            binding.txt2.text = "${it.forecast.forecastDay[0].day.minTempC}°C↓"
             binding.txtWeatherHumidityIs.text = "${it.current.humidity}%"
-            adapter.setList(it.forecast.forecastDay)
             binding.txtWeatherPressureIs.text = "${it.current.pressuremMb}mBar"
             binding.txtWeatherWindIs.text = "${it.current.windKph}km/h"
             binding.txtSunriseIs.text = it.forecast.forecastDay[0].astro.sunrise
             binding.txtSunsetIs.text = it.forecast.forecastDay[0].astro.sunset
             binding.dayDataTimeText.text =
                 formatUnixTimestamp(it.location.localtimeEpoch.toLong(), it.location.zoneId)
+            adapter.submitList(it.forecast.forecastDay)
         }
     }
 }

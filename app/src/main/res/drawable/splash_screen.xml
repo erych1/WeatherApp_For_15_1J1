@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@color/black" />
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/weather_forecast_logo" />
+            android:src="@drawable/weather_forecast_logo"
+            />
     </item>
 
 </layer-list>

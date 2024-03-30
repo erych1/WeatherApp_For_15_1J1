@@ -7,8 +7,5 @@
 
     <style name="Theme.WeatherApp_For_15_1J" parent="Base.Theme.WeatherApp_For_15_1J" />
 
-    <style name="SplashScreenTheme" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
-        <item name="android:statusBarColor">@color/black</item>
-    </style>
+
 </resources>

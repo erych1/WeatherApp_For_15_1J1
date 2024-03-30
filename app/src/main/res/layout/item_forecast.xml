@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
     android:gravity="center"
     >
 
@@ -22,14 +22,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="20dp">
 
 
             <ImageView
                 android:id="@+id/item_img"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:src="@drawable/cloud"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,10 +40,11 @@
                 android:id="@+id/item_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mon_28_c"
+                tools:text="@string/mon_28_c"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="@+id/item_img"
                 app:layout_constraintStart_toStartOf="@+id/item_img"
                 app:layout_constraintTop_toBottomOf="@+id/item_img" />
@@ -57,7 +59,8 @@
                 android:textSize="10sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/item_temp"
+                app:layout_constraintEnd_toStartOf="@id/min_temp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_temp"
                 tools:ignore="SmallSp" />
 
@@ -71,7 +74,8 @@
                 android:textSize="10sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/item_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/max_temp"
                 app:layout_constraintTop_toBottomOf="@id/item_temp"
                 tools:ignore="SmallSp" />
         </androidx.constraintlayout.widget.ConstraintLayout>

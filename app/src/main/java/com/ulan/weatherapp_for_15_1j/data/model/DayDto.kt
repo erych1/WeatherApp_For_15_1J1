@@ -3,6 +3,8 @@ package com.ulan.weatherapp_for_15_1j.data.model
 import com.google.gson.annotations.SerializedName
 
 data class DayDto(
+    @SerializedName("avgtemp_c")
+    val avgtemp: String,
     @SerializedName("maxtemp_c")
     val maxTempC: String,
     @SerializedName("mintemp_c")
