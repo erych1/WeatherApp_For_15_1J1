@@ -16,7 +16,7 @@ import java.util.Locale
 
 
 class ForecastAdapter : ListAdapter<ForecastDayDto,ForecastAdapter.ForecastViewHolder>(ForecastDiffUtill()) {
-    class ForecastViewHolder(private val binding: ItemForecastBinding) : ViewHolder(binding.root) {
+    inner class ForecastViewHolder(private val binding: ItemForecastBinding) : ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun onBind(forecastModel: ForecastDayDto?) {
             Glide.with(binding.root).load("https:${forecastModel?.day?.condition?.icon}").into(binding.itemImg)
